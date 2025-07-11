@@ -51,11 +51,19 @@ const OurServices = () => {
   return (
     <div className="max-w-7xl mx-auto px-4 py-12">
       <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
+
+      <p className="text-center text-gray-400 max-w-2xl mx-auto mb-8">
+        We provide fast and secure delivery services across Bangladesh,
+        including same-day express options in major cities. From
+        cash-on-delivery to fulfillment and corporate logistics, our solutions
+        are built to support businesses of all sizes. 
+      </p>
+
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {services.map((service, index) => (
           <div
             key={index}
-            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border hover:border-indigo-500 group"
+            className="bg-white rounded-2xl shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border hover:border-indigo-500 group hover:bg-emerald-300 "
           >
             <div className="flex items-center mb-4">
               <div className="bg-indigo-100 p-3 rounded-full mr-4 group-hover:scale-110 transition-transform">
