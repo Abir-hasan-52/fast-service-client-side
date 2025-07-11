@@ -9,13 +9,13 @@ import logo6 from "../../assets/brands/start-people 1.png";
 import logo7 from "../../assets/brands/start.png";
 //  Example brand logos (replace with your actual logo URLs)
 const brands = [
-  { name: "Daraz", src: logo1 },
-  { name: "Evaly", src: logo2 },
-  { name: "Pickaboo", src: logo3 },
-  { name: "AjkerDeal", src: logo4 },
-  { name: "Othoba", src: logo5 },
-  { name: "Rokomari", src: logo6 },
-  { name: "PriyoShop", src: logo7 },
+  { name: "amazon", src: logo1 },
+  { name: "amazon_vector", src: logo2 },
+  { name: "casio", src: logo3 },
+  { name: "moonstar", src: logo4 },
+  { name: "randstad", src: logo5 },
+  { name: "start-people ", src: logo6 },
+  { name: "start", src: logo7 },
 ];
 
 const ClientLogoMarquee = () => {
