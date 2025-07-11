@@ -32,7 +32,7 @@ const FeatureCards = () => {
         {features.map((item, index) => (
           <div
             key={index}
-            className="bg-white rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center md:items-start gap-6 shadow-sm hover:shadow-md transition duration-300"
+            className="bg-white rounded-xl p-6 sm:p-8 flex flex-col md:flex-row items-center md:items-center gap-6 shadow-sm hover:shadow-md transition duration-300"
           >
             <img
               src={item.image}
