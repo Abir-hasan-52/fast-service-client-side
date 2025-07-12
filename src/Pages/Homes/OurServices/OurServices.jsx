@@ -49,7 +49,7 @@ const services = [
 
 const OurServices = () => {
   return (
-    <div className="max-w-7xl mx-auto px-4 py-12">
+    <div className="max-w-7xl bg-[#03373D] rounded-4xl mx-auto px-4 py-12">
       <h2 className="text-3xl font-bold text-center mb-10">Our Services</h2>
 
       <p className="text-center text-gray-400 max-w-2xl mx-auto mb-8">

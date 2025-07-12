@@ -5,6 +5,7 @@ import ClientLogoMarquee from '../../ClientLogoMarquee/ClientLogoMarquee';
 import FeatureCards from '../../FeatureCards/FeatureCards';
 import BeMerchant from '../../BeMerchant/BeMerchant';
 import HowItWorks from '../../HowWorks/HowItWorks';
+import CustomerTestimonials from '../../CustomerTestimonials/CustomerTestimonials';
 
 const Home = () => {
     return (
@@ -15,6 +16,7 @@ const Home = () => {
              <ClientLogoMarquee></ClientLogoMarquee>
              <FeatureCards></FeatureCards>
              <BeMerchant></BeMerchant>
+             <CustomerTestimonials></CustomerTestimonials>
         </div>
     );
 };
