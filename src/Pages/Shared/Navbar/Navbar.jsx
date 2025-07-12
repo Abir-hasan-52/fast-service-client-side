@@ -9,7 +9,10 @@ const Navbar = () => {
         <NavLink to="/"> Home</NavLink>
       </li>
       <li>
-       <NavLink to="/about"> About Us</NavLink>
+        <NavLink to="/about"> About Us</NavLink>
+      </li>
+      <li>
+        <NavLink to="/coverage">Coverage</NavLink>
       </li>
     </>
   );
@@ -41,9 +44,9 @@ const Navbar = () => {
             {navItems}
           </ul>
         </div>
-         <div>
-           <FastServiceLogo></FastServiceLogo> 
-         </div>
+        <div>
+          <FastServiceLogo></FastServiceLogo>
+        </div>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
