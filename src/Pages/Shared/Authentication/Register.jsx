@@ -1,21 +1,38 @@
 import React from "react";
 import { useForm } from "react-hook-form";
+import useAuth from "../../../Hooks/useAuth";
+import { Link } from "react-router";
 
 const Register = () => {
   const {
     register,
     handleSubmit,
     formState: { errors },
-     
   } = useForm({
-    criteriaMode:"all"
+    criteriaMode: "all",
   });
+  const {createUser}=useAuth()
   const onSubmit = (data) => {
     console.log(data);
+    const {email,password}=data
+    console.log(email,password)
+    createUser(email,password)
+    .then(result=>{
+        console.log(result.user);
+        alert(`successful${result.user}`);
+    }).catch(error=>{
+        console.log(error);
+        alert(`error ${error.message}`);
+    })
   };
   return (
     <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
       <div className="card-body">
+        <h1 className="text-4xl font-extrabold">
+            Create an Account
+        </h1>
+        <p className="text-md font-semibold">Register with FastService</p>
+        <img></img>
         <form onSubmit={handleSubmit(onSubmit)}>
           <fieldset className="fieldset">
             {/* email */}
@@ -60,10 +77,13 @@ const Register = () => {
             <div>
               <a className="link link-hover">Forgot password?</a>
             </div>
-            <button type="submit" className="btn btn-neutral mt-4">
-              Login
+            <button type="submit" className="btn  bg-[#CAEB66] mt-4">
+              Register
             </button>
           </fieldset>
+          <div>
+              <p className="link link-hover text-md"><strong >Already Have an Account?<Link className="text-yellow-500 underline" to="/login">Login</Link></strong></p>
+            </div>
         </form>
       </div>
     </div>
