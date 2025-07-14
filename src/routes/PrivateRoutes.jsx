@@ -5,6 +5,7 @@ import { Navigate } from "react-router";
 
 const PrivateRoutes = ({children}) => {
   const { user, loading } = useAuth();
+   
 
   if (loading) {
     return <Loader></Loader>;

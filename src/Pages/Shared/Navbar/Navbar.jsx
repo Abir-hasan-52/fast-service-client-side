@@ -1,8 +1,10 @@
 import React from "react";
-import { NavLink } from "react-router";
+import { Link, NavLink } from "react-router";
 import FastServiceLogo from "../FastServiceLogo/FastServiceLogo";
+import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
+  const { user } = useAuth();
   const navItems = (
     <>
       <li>
@@ -14,6 +16,16 @@ const Navbar = () => {
       <li>
         <NavLink to="/coverage">Coverage</NavLink>
       </li>
+      <li>
+        <NavLink to="/SendParcel">SendParcel</NavLink>
+      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/dashboard">DashBoard</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -52,7 +64,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        <Link to="/login">
+          <button className="btn bg-[#CAEB66]">Login</button>
+        </Link>
       </div>
     </div>
   );
