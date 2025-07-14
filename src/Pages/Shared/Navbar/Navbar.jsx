@@ -4,7 +4,16 @@ import FastServiceLogo from "../FastServiceLogo/FastServiceLogo";
 import useAuth from "../../../Hooks/useAuth";
 
 const Navbar = () => {
-  const { user } = useAuth();
+  const { user,logOutUser } = useAuth();
+  const handleLogOut=()=>{
+    logOutUser()
+    .than(result=>{
+      console.log(result)
+    })
+    .catch(error=>{
+      console.log(error.message)
+    })
+  }
   const navItems = (
     <>
       <li>
@@ -64,9 +73,22 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navItems}</ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
+        {
+          user ? <>
+          <Link to="/login">
+          <button onClick={handleLogOut} className="btn bg-[#CAEB66]">Logout</button>
+        </Link>
+          </>:
+          <>
+          <Link to="/register">
+          <button className="btn bg-[#CAEB66]">register</button>
+        </Link>
+          <Link to="/login">
           <button className="btn bg-[#CAEB66]">Login</button>
         </Link>
+          </>
+        }
+         
       </div>
     </div>
   );

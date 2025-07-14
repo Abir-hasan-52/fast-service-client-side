@@ -3,10 +3,12 @@ import React from "react";
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Link, useNavigate } from "react-router";
 
 const MyParcels = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
+  const navigate=useNavigate()
 
   const {
     data: parcels = [],
@@ -19,6 +21,11 @@ const MyParcels = () => {
       return res.data;
     },
   });
+
+  const handlePay = (id) => {
+    console.log('id',id)
+    navigate(`/dashboard/payment/${id}`);
+  }
 
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
@@ -119,12 +126,13 @@ const MyParcels = () => {
                   <button className="btn btn-sm btn-outline btn-info">
                     View
                   </button>
-                  <button
+                  <Link
                     disabled={parcel.payment_status === "paid"}
+                    onClick={()=>handlePay(parcel._id)}
                     className="btn btn-sm btn-outline btn-success"
                   >
                     Pay
-                  </button>
+                  </Link>
                   <button
                     onClick={() => handleDelete(parcel._id)}
                     className="btn btn-sm btn-outline btn-error"
