@@ -1,14 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router";
+import Swal from "sweetalert2";
+
 import useAuth from "../../../Hooks/useAuth";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
-import Swal from "sweetalert2";
-import { Link, useNavigate } from "react-router";
 
 const MyParcels = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
-  const navigate=useNavigate()
 
   const {
     data: parcels = [],
@@ -21,11 +21,6 @@ const MyParcels = () => {
       return res.data;
     },
   });
-
-  const handlePay = (id) => {
-    console.log('id',id)
-    navigate(`/dashboard/payment/${id}`);
-  }
 
   const handleDelete = async (id) => {
     const confirm = await Swal.fire({
@@ -49,7 +44,7 @@ const MyParcels = () => {
             timer: 1500,
             showConfirmButton: false,
           });
-          refetch(); // ✅ Refresh data after deletion
+          refetch();
         } else {
           throw new Error("Deletion failed");
         }
@@ -61,12 +56,16 @@ const MyParcels = () => {
   };
 
   if (isLoading) {
-    return <div className="text-center py-8">Loading...</div>;
+    return (
+      <div className="text-center py-16">
+        <span className="loading loading-spinner loading-lg text-primary"></span>
+      </div>
+    );
   }
 
   return (
     <div className="overflow-x-auto max-w-6xl mx-auto p-4">
-      <h2 className="text-2xl font-bold text-center mb-4">My Parcels</h2>
+      <h2 className="text-2xl font-bold text-center mb-6">My Parcels</h2>
 
       <table className="table table-zebra w-full text-sm">
         <thead>
@@ -120,19 +119,24 @@ const MyParcels = () => {
                 </span>
               </td>
 
-              {/* Responsive Action Buttons */}
+              {/* Action Buttons */}
               <td>
                 <div className="flex gap-2 lg:flex-col">
                   <button className="btn btn-sm btn-outline btn-info">
                     View
                   </button>
+
                   <Link
-                    disabled={parcel.payment_status === "paid"}
-                    onClick={()=>handlePay(parcel._id)}
-                    className="btn btn-sm btn-outline btn-success"
+                    to={`/dashboard/payment/${parcel._id}`}
+                    className={`btn btn-sm btn-outline btn-success ${
+                      parcel.payment_status === "paid"
+                        ? "pointer-events-none opacity-50"
+                        : ""
+                    }`}
                   >
                     Pay
                   </Link>
+
                   <button
                     onClick={() => handleDelete(parcel._id)}
                     className="btn btn-sm btn-outline btn-error"
