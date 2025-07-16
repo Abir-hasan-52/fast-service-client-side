@@ -10,6 +10,7 @@ import PrivateRoutes from "../routes/PrivateRoutes";
 import DashboardLayOut from "../MainLayOut/DashboardLayOut";
 import MyParcels from "../Pages/DashBoard/MyParcels/MyParcels";
 import Payment from "../Pages/DashBoard/Payment/Payment";
+import PaymentHistory from "../Pages/DashBoard/Payment/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -51,19 +52,25 @@ export const router = createBrowserRouter([
     ],
   },
   {
-    path:'/dashboard',
-    element:<PrivateRoutes>
-      <DashboardLayOut></DashboardLayOut>
-    </PrivateRoutes>,
-    children:[
+    path: "/dashboard",
+    element: (
+      <PrivateRoutes>
+        <DashboardLayOut></DashboardLayOut>
+      </PrivateRoutes>
+    ),
+    children: [
       {
-        path:'myParcels',
-        Component:MyParcels,
+        path: "myParcels",
+        Component: MyParcels,
       },
       {
-        path:"payment/:parcelId",
-        Component:Payment,
-      }
-    ]
-  }
+        path: "payment/:parcelId",
+        Component: Payment,
+      },
+      {
+        path: "paymentHistory",
+        Component: PaymentHistory,
+      },
+    ],
+  },
 ]);

@@ -1,6 +1,9 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import FastServiceLogo from "../Pages/Shared/FastServiceLogo/FastServiceLogo";
+import { AiFillHome } from "react-icons/ai";
+import { FaBoxOpen, FaMoneyCheckAlt, FaUserEdit } from "react-icons/fa";
+import { MdLocalShipping } from "react-icons/md";
 
 const DashboardLayOut = () => {
   return (
@@ -31,7 +34,6 @@ const DashboardLayOut = () => {
             </label>
           </div>
           <div className="mx-2 lg:hidden flex-1 px-2">DashBoard</div>
-          
         </div>
         {/* Page content here */}
         <Outlet></Outlet>
@@ -47,10 +49,29 @@ const DashboardLayOut = () => {
           {/* Sidebar content here */}
           <FastServiceLogo></FastServiceLogo>
           <li>
-            <Link to='/'>Home</Link>
+            <Link to="/">
+              <AiFillHome className="inline-block mr-1" /> Home
+            </Link>
           </li>
           <li>
-             <NavLink to='/dashboard/myParcels'>My-parcels</NavLink>
+            <NavLink to="/dashboard/myParcels">
+              <FaBoxOpen className="inline-block mr-1" /> My Parcels
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/paymentHistory">
+              <FaMoneyCheckAlt className="inline-block mr-1" /> Payment History
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/track">
+              <MdLocalShipping className="inline-block mr-1" /> Track a Package
+            </NavLink>
+          </li>
+          <li>
+            <NavLink to="/dashboard/profile">
+              <FaUserEdit className="inline-block mr-1" /> Update Profile
+            </NavLink>
           </li>
         </ul>
       </div>

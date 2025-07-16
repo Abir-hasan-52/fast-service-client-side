@@ -1,6 +1,6 @@
 import { useForm } from "react-hook-form";
 import Swal from "sweetalert2";
-import { useLoaderData } from "react-router";
+import { useLoaderData, useNavigate } from "react-router";
 import useAuth from "../../hooks/useAuth";
 import useAxiosSecure from "../../Hooks/useAxiosSecure";
 // import useAxiosSecure from "../../hooks/useAxiosSecure";
@@ -20,7 +20,7 @@ const SendParcel = () => {
     formState: { errors },
   } = useForm();
   const { user } = useAuth();
- 
+  const navigate= useNavigate();
 const axiosSecure= useAxiosSecure();
 
   const serviceCenters = useLoaderData();
@@ -120,6 +120,7 @@ const axiosSecure= useAxiosSecure();
           console.log(res.data);
           if (res.data.insertedId) {
             // TODO: redirect to a payment page
+             navigate('/dashboard/myParcels');
             Swal.fire({
               title: "Redirecting...",
               text: "Proceeding to payment gateway.",

@@ -126,16 +126,21 @@ const MyParcels = () => {
                     View
                   </button>
 
-                  <Link
-                    to={`/dashboard/payment/${parcel._id}`}
-                    className={`btn btn-sm btn-outline btn-success ${
-                      parcel.payment_status === "paid"
-                        ? "pointer-events-none opacity-50"
-                        : ""
-                    }`}
-                  >
-                    Pay
-                  </Link>
+                  {parcel.payment_status === "paid" ? (
+                    <button
+                      className="btn btn-sm btn-outline btn-success"
+                      disabled
+                    >
+                      Paid
+                    </button>
+                  ) : (
+                    <Link
+                      to={`/dashboard/payment/${parcel._id}`}
+                      className="btn btn-sm btn-outline btn-success"
+                    >
+                      Pay
+                    </Link>
+                  )}
 
                   <button
                     onClick={() => handleDelete(parcel._id)}
