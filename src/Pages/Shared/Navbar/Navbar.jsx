@@ -19,15 +19,7 @@ const Navbar = () => {
       <li>
         <NavLink to="/"> Home</NavLink>
       </li>
-      <li>
-        <NavLink to="/about"> About Us</NavLink>
-      </li>
-      <li>
-        <NavLink to="/coverage">Coverage</NavLink>
-      </li>
-      <li>
-        <NavLink to="/SendParcel">SendParcel</NavLink>
-      </li>
+       
       {user && (
         <>
           <li>
@@ -35,6 +27,20 @@ const Navbar = () => {
           </li>
         </>
       )}
+      <li>
+        <NavLink to="/SendParcel">SendParcel</NavLink>
+      </li>
+            <li>
+        <NavLink to="/coverage">Coverage</NavLink>
+      </li>
+
+      <li>
+        <NavLink to="/beARider"> Be A Rider</NavLink>
+      </li>
+      <li>
+        <NavLink to="/about"> About Us</NavLink>
+      </li>
+        
     </>
   );
   return (

@@ -1,9 +1,16 @@
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router";
 import FastServiceLogo from "../Pages/Shared/FastServiceLogo/FastServiceLogo";
-import { AiFillHome } from "react-icons/ai";
-import { FaBoxOpen, FaMoneyCheckAlt, FaUserEdit } from "react-icons/fa";
+
+import {
+  FaBoxOpen,
+  FaMoneyCheckAlt,
+  FaUserEdit,
+  FaUserCheck,
+  FaUserClock,
+} from "react-icons/fa";
 import { MdLocalShipping } from "react-icons/md";
+import { AiFillHome } from "react-icons/ai";
 
 const DashboardLayOut = () => {
   return (
@@ -47,30 +54,49 @@ const DashboardLayOut = () => {
         ></label>
         <ul className="menu bg-base-200 text-base-content min-h-full w-80 p-4">
           {/* Sidebar content here */}
-          <FastServiceLogo></FastServiceLogo>
+          <FastServiceLogo />
+
           <li>
             <Link to="/">
               <AiFillHome className="inline-block mr-1" /> Home
             </Link>
           </li>
+
           <li>
             <NavLink to="/dashboard/myParcels">
               <FaBoxOpen className="inline-block mr-1" /> My Parcels
             </NavLink>
           </li>
+
           <li>
             <NavLink to="/dashboard/paymentHistory">
               <FaMoneyCheckAlt className="inline-block mr-1" /> Payment History
             </NavLink>
           </li>
+
           <li>
             <NavLink to="/dashboard/track">
               <MdLocalShipping className="inline-block mr-1" /> Track a Package
             </NavLink>
           </li>
+
           <li>
             <NavLink to="/dashboard/profile">
               <FaUserEdit className="inline-block mr-1" /> Update Profile
+            </NavLink>
+          </li>
+
+          {/* ✅ New Link: Active Riders */}
+          <li>
+            <NavLink to="/dashboard/activeRiders">
+              <FaUserCheck className="inline-block mr-1" /> Active Riders
+            </NavLink>
+          </li>
+
+          {/* ✅ New Link: Pending Riders */}
+          <li>
+            <NavLink to="/dashboard/pendingRiders">
+              <FaUserClock className="inline-block mr-1" /> Pending Riders
             </NavLink>
           </li>
         </ul>

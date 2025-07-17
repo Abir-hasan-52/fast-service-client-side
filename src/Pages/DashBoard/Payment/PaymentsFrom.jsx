@@ -50,6 +50,7 @@ const PaymentsFrom = () => {
     if (card == null) {
       return;
     }
+    // step-1: validate the card
     const { error, paymentMethod } = await stripe.createPaymentMethod({
       type: "card",
       card,
@@ -60,7 +61,7 @@ const PaymentsFrom = () => {
     } else {
       setError("");
       console.log("payment method", paymentMethod);
-      // create payment intent
+      // step-2: create payment intent
       const res = await axiosSecure.post("/create-payment-intent", {
         amountInCents,
         parcelId,
@@ -86,7 +87,7 @@ const PaymentsFrom = () => {
         console.log("payment succeeded!");
         console.log(result);
         const transactionId = result.paymentIntent.id;
-        // step-4: mark pacel paid also create payment history;
+        // step-4: mark parcel paid also create payment history;
         const paymentData= {
             parcelId,
             email:user.email,

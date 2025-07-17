@@ -1,29 +1,43 @@
 import React from "react";
 import useAuth from "../../../../Hooks/useAuth";
 import { useLocation, useNavigate } from "react-router";
+import useAxios from "../../../../Hooks/useAxios";
 
 const SocialLogin = () => {
-    const {signInWithGoogle}=useAuth();
-     const location =useLocation();
+  const { signInWithGoogle } = useAuth();
+  const axiosPublic = useAxios();
+  const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from || '/';
-    const handleGoogleSignIn=()=>{
-        signInWithGoogle()
-        .then(result=>{
-            console.log(result.user);
-            alert("login successful");
-            navigate(from);
-        })
-        .catch(error=>{
-            alert(`login failed ${error.massage}`);
-        })
+  const from = location.state?.from || "/";
+  const handleGoogleSignIn = () => {
+    signInWithGoogle()
+      .then( async(result) => {
+        console.log(result.user);
+        const user =result.user;
 
-        
-    }
+        const userInfo = {
+          email: user.email,
+          role: "user", //default role
+          created_at: new Date().toISOString(),
+          last_log_in: new Date().toISOString(),
+        };
+        const userRes= await axiosPublic.post('/users',userInfo);
+        console.log('user update info',userRes.data);
+
+        alert("login successful");
+        navigate(from);
+      })
+      .catch((error) => {
+        alert(`login failed ${error.massage}`);
+      });
+  };
   return (
     <div className="text-center">
       <p className="text-xl font-bold my-2">OR</p>
-      <button onClick={handleGoogleSignIn} className="btn w-full bg-[#E9ECF1] text-black border-[#e5e5e5]">
+      <button
+        onClick={handleGoogleSignIn}
+        className="btn w-full bg-[#E9ECF1] text-black border-[#e5e5e5]"
+      >
         <svg
           aria-label="Google logo"
           width="16"
